@@ -12,7 +12,7 @@ function validate(event){
     event.preventDefault();
     var formData = new FormData(event.target);
     var name = formData.get("name");
-    var email = formData.get("email");
+    var email = formData.get("E-mail");
     var password = formData.get("password");
     var confirmPassword = formData.get("confirmPassword");
     var phone =  formData.get("phone");
@@ -20,7 +20,7 @@ function validate(event){
 
     nameValidation(name,"name-error");
     emailValidation(email,"email-error");
-    
+
 }
 
     // if(!name){
@@ -45,7 +45,7 @@ function validate(event){
     // }
 
     function nameValidation(value,id){
-        isEmptyOrShort(value, id , 3, "Name");
+        isEmptyOrShort(value, id , 3, "name");
     }
 
     function isEmptyOrShort(value, id, minlength, key){
