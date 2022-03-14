@@ -15,12 +15,12 @@ function validate(event){
     var email = formData.get("E-mail");
     var password = formData.get("password");   //HOW TO TAKE VALUE FROM KEYBOARD
     var confirmPassword = formData.get("confirmPassword");
-    var phone =  formData.get("phone");
+    var phoneNumber =  formData.get("phone");
     var username = formData.get("username");
 
     nameValidation(name,"name-error");
     emailValidation(email,"email-error");
-    phoneValidation(phone,"phone-error")
+    phoneValidation(phoneNumber,"phone-error");
 
 }
 
@@ -75,10 +75,10 @@ function validate(event){
     }
 
     
-    function phoneValidation(value,id)
+    function phoneValidation(value, id)
     {
 
-        isEmptyOrShort(value, id, 10, "phone")
+        isEmptyOrShort(value, id, 10, "phoneNumber")
     }
 
         function isEmptyOrShort(value, id, minlength, key)
@@ -89,9 +89,9 @@ function validate(event){
             }
             if(value.length < minlength){
                 setError(id, key + "must be atleast" +  minlength  + "characters");
-            return;
+                return;
             }
-            setError(id, "")
+            setError(id, "");
 
         // if(!value){
         //     setError(id,"Please enter your phone number");
