@@ -18,6 +18,10 @@ function validate(event){
     var phone =  formData.get("phone");
     var username = formData.get("username");
 
+    nameValidation(name,"name-error");
+    emailValidation(email,"email-error");
+}
+
     // if(!name){
     //     _("name-error").innerHTML = "Please enter your name ";
     // }
@@ -39,6 +43,29 @@ function validate(event){
     //   _("confirmPassword-error").innerHTML = " Please check password";
     // }
 
-    
+    function nameValidation(value,id){
+        isEmptyOrShort(value, id , 3, "Name");
+    }
 
-}
+    function isEmptyOrShort(value, id, minlength, key){
+        if(!value){
+            SetError(id, "Please enter your"+key);
+        } else if(value.length < minlength){
+            SetError(id, key + "must be atleast" + minlength + "characters");
+        }
+        SetError(id,"");
+
+    }
+
+    function emailValidation(value, id){
+        if(!value){
+            SetError(id,"please enter your email");
+        }else if (!value.includes("@")) {
+            SetError(id, "Please enter a valid email");
+        }
+        SetError(id, "");
+    }
+
+    function SetError(id, message){
+        _(id).innerHTML = message;
+    }
