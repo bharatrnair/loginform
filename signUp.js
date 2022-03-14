@@ -20,6 +20,7 @@ function validate(event){
 
     nameValidation(name,"name-error");
     emailValidation(email,"email-error");
+    
 }
 
     // if(!name){
@@ -49,23 +50,29 @@ function validate(event){
 
     function isEmptyOrShort(value, id, minlength, key){
         if(!value){
-            SetError(id, "Please enter your"+key);
-        } else if(value.length < minlength){
-            SetError(id, key + "must be atleast" + minlength + "characters");
+            setError(id, "Please enter your"+key);
+            return;
         }
-        SetError(id,"");
+        if(value.length < minlength){
+            setError(id, key + "must be atleast" + minlength + "characters");
+        return;
+        }
+        setError(id, "");
 
     }
 
     function emailValidation(value, id){
         if(!value){
-            SetError(id,"please enter your email");
-        }else if (!value.includes("@")) {
-            SetError(id, "Please enter a valid email");
+            setError(id,"please enter your email");
+            return;
         }
-        SetError(id, "");
+        if (!value.includes("@")) {
+            setError(id, "Please enter a valid email");
+            return;
+        }
+        setError(id, "");
     }
 
-    function SetError(id, message){
+    function setError(id, message){
         _(id).innerHTML = message;
     }
