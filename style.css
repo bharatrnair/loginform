@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+}
+
+body{
+    background-color: #ddd;
+    display: grid;
+    place-items: center;
+}
+
+.container{
+    max-width: 500px;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 5px 6px 3px 2px #d9d9d9;
+}
+
+h1{
+    text-align: center;
+}
+
+.form-container{
+    padding-top: 20px;
+}
+
+.form-field{
+    padding: 10px 0;
+    display: grid;
+}
+
+label{
+    margin-bottom: 5px;
+}
+
+.form-field input{
+    height: 35px;
+    padding: 10px;
+    border: solid 1px #aaa;
+}
+.submission-section{
+    padding-top: 25;
+    display: grid;
+
+}
+.submission-section button{
+    height:40 px;
+    background-color: darkblue;
+    font-size: 20px;
+    color: white;
+}
+#error-message{
+    color: r;
+}
