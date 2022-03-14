@@ -10,16 +10,17 @@ function main(){
 
 function validate(event){
     event.preventDefault();
-    var formData = new FormData(event.target);
+    var formData = new FormData(event.target);  //CHECK
     var name = formData.get("name");
     var email = formData.get("E-mail");
-    var password = formData.get("password");
+    var password = formData.get("password");   //HOW TO TAKE VALUE FROM KEYBOARD
     var confirmPassword = formData.get("confirmPassword");
     var phone =  formData.get("phone");
     var username = formData.get("username");
 
     nameValidation(name,"name-error");
     emailValidation(email,"email-error");
+    phoneValidation(phone,"phone-error")
 
 }
 
@@ -45,7 +46,7 @@ function validate(event){
     // }
 
     function nameValidation(value,id){
-        isEmptyOrShort(value, id , 3, "name");
+        isEmptyOrShort(value, id , 3, "name"); //NAME OR KEY PASSING?
     }
 
     function isEmptyOrShort(value, id, minlength, key){
@@ -54,7 +55,7 @@ function validate(event){
             return;
         }
         if(value.length < minlength){
-            setError(id, key + "must be atleast" + minlength + "characters");
+            setError(id, key + "must be atleast" +  minlength  + "characters");
         return;
         }
         setError(id, "");
@@ -73,6 +74,43 @@ function validate(event){
         setError(id, "");
     }
 
+    
+    function phoneValidation(value,id)
+    {
+
+        isEmptyOrShort(value, id, 10, "phone")
+    }
+
+        function isEmptyOrShort(value, id, minlength, key)
+        {
+            if(!value){
+                setError(id, "Please enter your"+key);
+                return;
+            }
+            if(value.length < minlength){
+                setError(id, key + "must be atleast" +  minlength  + "characters");
+            return;
+            }
+            setError(id, "")
+
+        // if(!value){
+        //     setError(id,"Please enter your phone number");
+        //     return;
+        // } 
+        
+        // if(value!==Number){
+        //     setError(id,"Please enter a valid number");
+        //     return;
+        // }
+        
+        // if(value.length < 3){
+        //     setError(id,"Please enter the required number");
+        //     return;
+        // }
+        // setError(id,"");
+        
+    }
+    
     function setError(id, message){
         _(id).innerHTML = message;
     }

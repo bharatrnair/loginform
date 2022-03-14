@@ -38,7 +38,7 @@ h1{
     
 }
 .submission-section{
-    padding-top: 25;
+    padding-top: 40px;
     display: grid;
 
 }
@@ -47,6 +47,7 @@ h1{
     background-color: rgb(44, 112, 201);
     font-size: 20px;
     color: black;
+    
 }
 
 .error-message{
