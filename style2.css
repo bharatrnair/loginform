@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+}
+body{
+    background-color: rgb(68, 109, 221);
+    display: grid;
+    place-items: center;
+}
+
+.container{
+    max-width: 500px;
+    width: 100%;
+    background-color:darkblue;
+    padding: 20px;
+    box-shadow: 5px 6px 3px 2px #8eaeeb;
+}
+
+h1{
+    text-align: center;
+    color: #d9d9d9;
+}
+
+.Form-container{
+    padding-top: 20px;
+}
+
+.form-field{
+    padding: 10px 0;
+    display: grid;
+    color: #d9d9d9;
+}
+.submission-section{
+    padding-top: 25;
+    display: grid;
+
+}
+.submission-section button{
+    height:40 px;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+}
