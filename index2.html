@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style2.css">
+    <script src="./signUp.js"></script>
 </head>
 <body>
     <div class="container">
@@ -13,22 +14,34 @@
             SIGN-UP
         </h1>
         <div class="Form-container">
-            <form action="#">
+            <form action="#" id = "signup-form">
                 <div class="form-field">
-                    <label for="User-Name">USERNAME</label>
+                    <label for="Name">NAME</label>
+                    <input type="text" placeholder="name" id="name" name= "name">
+                    <div class="error-message" id = "name-error"> </div>
+                </div>
+                <div class="form-field">
+                    <label for="username">USERNAME</label>
                     <input type="text" placeholder="username" id="username">
+                    <div class="error-message" id = "username-error"> </div>
                 </div>
                 <div class="form-field">
                     <label for="Pass-Word">PASSWORD</label>
                     <input type="password" placeholder="password" id="password">
+                    <div class="error-message" id = "password-error"> </div>
                 </div>
                 <div class="form-field">
                     <label for="Confirm-Password">Confirm-Password</label>
-                    <input type="password" placeholder="Confirm-Password" id="Confirm-Password">
+                    <input type="password" placeholder="ConfirmPassword" id="ConfirmPassword">
+                    <div class="error-message" id = "confirmPassword-error"> </div>
                 </div>
                 <div class="form-field">
                     <label for="E-Mail">E-Mail</label>
                     <input type="text" placeholder="E-Mail" id="E-Mail">
+                </div>
+                <div class="form-field">
+                    <label for="Phone">Phone</label>
+                    <input type="number" placeholder="xx-xxxxxx" id="">
                 </div>
                 <div class="submission-section">
                     <button type="submit">Login</button>

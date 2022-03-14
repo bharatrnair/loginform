@@ -27,12 +27,15 @@ h1{
 
 .Form-container{
     padding-top: 20px;
+    
 }
 
 .form-field{
     padding: 10px 0;
     display: grid;
     color: #d9d9d9;
+    height: 100px;
+    
 }
 .submission-section{
     padding-top: 25;
@@ -40,8 +43,22 @@ h1{
 
 }
 .submission-section button{
-    height:40 px;
-    background-color: white;
+    height:40px;
+    background-color: rgb(44, 112, 201);
     font-size: 20px;
     color: black;
+}
+
+.error-message{
+    color: red;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin:0;
+}
+
+input[type=number]{
+    -moz-appearance: textfield;
 }
