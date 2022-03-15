@@ -30,6 +30,19 @@
         }
         var url = new URL(location.href);
         var id = url.searchParams.get("id");
+    
+        const getRequest = (url)=> new Promise((resolve,reject)=>{
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState === 4 && xhr.status ==200){
+                    resolve(JSON.parse(xhr.responseText));
+                }else if(this.readyState === 4){
+                    reject(xhr.statusText);
+                }
+
+                xhr.open("GET",url,true);
+                xhr.send();
+            });
 
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
