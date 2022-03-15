@@ -43,6 +43,7 @@ function submit(data) {
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 201) {
        let result = JSON.parse(this.responseText);
+       window.location.href = "./user.html?id=" + result.id;
         console.log(result);
       }
     };
