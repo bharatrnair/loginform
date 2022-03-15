@@ -18,10 +18,18 @@ function validate(event){
     var phone =  formData.get("phone");
     var username = formData.get("username");
 
-    nameValidation(name,"name-error");
-    emailValidation(email,"email-error");
-    phoneValidation(phone,"phone-error");
-    passwordValidation(password,"password-error")
+    if(
+    nameValidation(name,"name-error")&&
+    emailValidation(email,"email-error")&&
+    phoneValidation(phone,"phone-error")&&
+    passwordValidation(password,"password-error")&&
+    confirmValidation(confirmPassword,password,"confirmPassword-error")&&
+    usernameValidation(username,"username-error")
+    ){
+        console.log("success");
+    }else{
+        console.log("failed");
+    }
 
 }
 
@@ -47,76 +55,75 @@ function validate(event){
     // }
 
     function nameValidation(value,id){
-        isEmptyOrShort(value, id , 3, "name"); //NAME OR KEY PASSING?
+        return !isEmptyOrShort(value, id , 3, "name"); //NAME OR KEY PASSING?
     }
 
     function isEmptyOrShort(value, id, minlength, key){
         if(!value){
             setError(id, "Please enter your"+key);
-            return;
+            return true;
         }
         if(value.length < minlength){
             setError(id, key + " must be atleast " +  minlength  + " characters ");
-        return;
+        return true;
         }
         setError(id, "");
+        return false;
 
     }
 
     function emailValidation(value, id){
         if(!value){
             setError(id,"please enter your email");
-            return;
+            return false;
         }
         if (!value.includes("@")) {
             setError(id, "Please enter a valid email");
-            return;
+            return false;
         }
         setError(id, "");
-    }
+        return true;
+    }   
+    function phoneValidation(value,id){
 
+        return !isPhoneNumber(value, id, 10, "phoneNumber") ;
+    }
     
-    function phoneValidation(value,id)
+    function isPhoneNumber(value, id, minlength, key)
     {
-
-        isEmptyOrShort(value, id, 10, "phoneNumber") 
-    }
-    
-
-        function isEmptyOrShort(value, id, minlength, key)
+        if(!value){
+          setError(id,"please enter a phone number")  
+          return true ;
+        }
+        if(value.length !== minlength)
         {
-            if(!value){
-                setError(id, "Please enter your"+key);
-                return;
-            }
-            if(value.toString().length < minlength){  //length of number?
-                setError(id, key + " must be atleast " +  minlength  + " characters ");
-                return;
-            }
-            setError(id, "");
-
-        // if(!value){
-        //     setError(id,"Please enter your phone number");
-        //     return;
-        // } 
-        
-        // if(value!==Number){
-        //     setError(id,"Please enter a valid number");
-        //     return;
-        // }
-        
-        // if(value.length < 3){
-        //     setError(id,"Please enter the required number");
-        //     return;
-        // }
-        // setError(id,"");
-        
+            setError(id,"must be"+minlength+"character")
+            return true;
+        }
+        setError(id, "");
+        return false;
     }
     function passwordValidation(value,id)
     {
-        
+        return !isEmptyOrShort(value, id, 6, "Password")
+
     }
-    
+
+    function confirmValidation(value, password,id){
+        console.log(value,id);
+        if(value !== password){
+            setError(id,"password does not match");
+            return false;
+        }
+        setError(id, "");
+        return true;
+    }
+
+    function usernameValidation(value,id){
+        console.log(value,id)
+       return !isEmptyOrShort(value, id, 3, "username");
+    }
+
     function setError(id, message){
         _(id).innerHTML = message;
     }
