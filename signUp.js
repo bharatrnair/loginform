@@ -26,12 +26,30 @@ function validate(event){
     confirmValidation(confirmPassword,password,"confirmPassword-error")&&
     usernameValidation(username,"username-error")
     ){
-        console.log("success");
+        submit({
+            name,
+            email,
+            password,
+            phone,
+            username
+        });
     }else{
         console.log("failed");
     }
 
 }
+function submit(data) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 201) {
+       let result = JSON.parse(this.responseText);
+        console.log(result);
+      }
+    };
+    xhttp.open("POST", "http://192.168.1.39:3000/user", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(data));
+  }
 
     // if(!name){
     //     _("name-error").innerHTML = "Please enter your name ";
