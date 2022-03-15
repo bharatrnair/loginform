@@ -39,18 +39,31 @@ function validate(event){
 
 }
 function submit(data) {
+    let postRequest = function (url, data){
+    return new Promise(function(resolve, reject){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 201) {
-       let result = JSON.parse(this.responseText);
-       window.location.href = "./user.html?id=" + result.id;
-        console.log(result);
+        resolve(JSON.parse(this.responseText));
+      }else if (this.readyState == 4){
+          reject (JSON.parse(this.responseText || "error"));
       }
     };
-    xhttp.open("POST", "http://192.168.1.39:3000/user", true);
+    xhttp.open("POST",url, true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(data));
-  }
+});  
+};
+
+postRequest("http://192.168.1.39:3000/user",data)
+ .then((result) =>{ 
+    window.location.href = "./user.html?id=" + result.id;
+})
+.catch((err) => {
+    console.log(err);
+});
+
+}
 
     // if(!name){
     //     _("name-error").innerHTML = "Please enter your name ";
