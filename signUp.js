@@ -57,7 +57,7 @@ function submit(data) {
 
 //function submit is converted into fetch
 
-Fetch("http://192.168.1.39:3000/user",{
+fetch("http://192.168.1.39:3000/user",{
     method:"POST",
     headers:{
         "Content-type":"application/json"
