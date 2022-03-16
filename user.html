@@ -44,17 +44,25 @@
                 xhr.send();
             });
 
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if(this.readyState == 4 && this.status==200){
-                var result = JSON.parse(this.responseText); //http
-            _("name").innerHTML = result.name;
-            _("phone").innerHTML = result.phone;
-            _("username").innerHTML = result.username;
-        }
-    };
-    xhttp.open("GET", "http://192.168.1.39:3000/user/"+id, true);
-    xhttp.send();
+    //     // var xhttp = new XMLHttpRequest();
+    //     xhttp.onreadystatechange = function() {
+    //         if(this.readyState == 4 && this.status==200){
+    //             var result = JSON.parse(this.responseText); //http
+    //         _("name").innerHTML = result.name;
+    //         _("phone").innerHTML = result.phone;
+    //         _("username").innerHTML = result.username;
+    //     }
+    // };
+    // xhttp.open("GET", "http://192.168.1.39:3000/user/"+id, true);
+    // xhttp.send();
+getRequest("http://192.168.1.39:3000/user/"+id).then((data)=>{
+       _("name").innerHTML = result.name;
+       _("phone").innerHTML = result.phone;
+     _("username").innerHTML = result.username;
+
+}).catch((err)=>{
+    console.log(err);
+});
     </script>
 </body>
 </html>
