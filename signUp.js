@@ -55,7 +55,16 @@ function submit(data) {
 });  
 };
 
-postRequest("http://192.168.1.39:3000/user",data)
+//function submit is converted into fetch
+
+Fetch("http://192.168.1.39:3000/user",{
+    method:"POST",
+    headers:{
+        "Content-type":"application/json"
+    },
+    body:JSON.stringify(data)
+})
+ .then((response)=> response.json())
  .then((result) =>{ 
     window.location.href = "./user.html?id=" + result.id;
 })

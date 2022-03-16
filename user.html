@@ -44,7 +44,11 @@
                 xhr.send();
             }}
             );
-    
+
+            //the above getrequest is converted into fetch
+
+
+    const Fetch = (...params)=>fetch(...params).then(res=>res.json())
 
     //     // var xhttp = new XMLHttpRequest();
     //     xhttp.onreadystatechange = function() {
@@ -57,7 +61,8 @@
     // };
     // xhttp.open("GET", "http://192.168.1.39:3000/user/"+id, true);
     // xhttp.send();
-getRequest("http://192.168.1.39:3000/user/"+id).then((data)=>{
+Fetch("http://192.168.1.39:3000/user/"+id)
+.then((data)=>{
        _("name").innerHTML = data.name;
        _("phone").innerHTML = data.phone;
       _("username").innerHTML = data.username;
