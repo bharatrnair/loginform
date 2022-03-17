@@ -7,7 +7,7 @@ html,body{
     height: 100%;
 }
 body{
-    background-color: rgb(221, 224, 235);
+    background-color: rgb(13, 18, 36);
     display: grid;
     place-items: center;
 }
